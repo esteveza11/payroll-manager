@@ -4,22 +4,67 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 // Collect employee data
 const collectEmployees = function() {
   // TODO: Get user input to create and return an array of employee objects
+  const employees = []
+  let keepGoing = true
+  
+  while (keepGoing) {
+    const firstName = prompt("Type employee's first name.") //Get input
+    const lastName = prompt("Type employee's last name.")
+    let salary = prompt("Type employee's salary (please enter without commas).")
+
+    if (isNaN(salary)) {
+      salary = 0; //if Not a Number Salary is set to be zero
+    } else {
+      salary = parseFloat(salary); // Adds formatting
+    }
+
+    const currentEmployee = { //Gets employee from inputted information
+      firstName: firstName,
+      lastName: lastName,
+      salary: salary
+    }
+
+    employees.push(currentEmployee)
+
+    const wantsToContinue = confirm("Click okay to add more employee data") //Prompting for possible more employee data or terminate
+
+    keepGoing = wantsToContinue
+  }
+
+  console.log(employees)
+  return employees
 }
+
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
+  let totalSalary = 0; //Starting pointer at 0
+  employeesArray.forEach(employee => {
+      totalSalary += employee.salary; //adding in the employees salary
+  });
+  
+  const averageSalary = totalSalary / employeesArray.length; //averages the salaries
+  
+  const output = `Average Salary: $${averageSalary.toFixed(2)} | Number of Employees: ${employeesArray.length}`;
+  
+  console.log(output);
 }
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
   // TODO: Select and display a random employee
-}
+    const randomIndex = Math.floor(Math.random() * employeesArray.length); //generates random index within range
+    const randomEmployee = employeesArray[randomIndex]; //gets a random employee
+    const fullName = `${randomEmployee.firstName} ${randomEmployee.lastName}`; //puts both first and last together to log the full employees name
+    
+    console.log("Congratulations" + `${fullName}` + " our random lottery drawing winner!");
+  }
 
 /*
   ====================
   STARTER CODE
-  Do not modify any of the code below this line:
+  Did not  modify any of the code below this line:
 */
 
 // Display employee data in an HTML table
