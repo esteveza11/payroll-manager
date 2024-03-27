@@ -33,4 +33,4 @@ THEN my employee data is displayed on the page sorted alphabetically by last nam
 ### Link to deployed application: 
 https://esteveza11.github.io/payroll-manager/
 ### Screenshot:
-![A user adds a blog through a form, then the post appears on the following page.](./Assets/Images/100-web-apis-challenge-demo.gif)
+! [Screenshot of deployed application opening page](./Screenshot)
